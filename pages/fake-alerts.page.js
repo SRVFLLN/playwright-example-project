@@ -15,12 +15,12 @@ exports.FakeAlertsPage = class FakeAlertsPage extends BasePage {
 
     async callFakeAlert() {
         await this.callFakeAlertButton.click();
-        this.repeatAction(await this._isDialogNotOpen(), async() => { await this.callFakeAlertButton.click()})
+        await this.repeatAction(await this._isDialogNotOpen(), async() => { await this.callFakeAlertButton.click()})
     }
 
     async callModalDialog() {
         await this.callModalDialogButton.click();
-        this.repeatAction(await this._isDialogNotOpen(), async () => {await this.callModalDialogButton.click()})
+        await this.repeatAction(await this._isDialogNotOpen(), async () => {await this.callModalDialogButton.click()})
     }
 
     async confirmDialog() {
@@ -38,7 +38,7 @@ exports.FakeAlertsPage = class FakeAlertsPage extends BasePage {
     }
 
     async isDialogBackDisplayed() {
-            return await this.dialogBackground.isVisible();
+        return await this.dialogBackground.isVisible();
     }
 
     async _isDialogNotOpen() {

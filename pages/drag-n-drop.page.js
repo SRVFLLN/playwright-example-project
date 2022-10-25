@@ -19,7 +19,7 @@ exports.DragNDropPage = class DragNDropPage extends BasePage {
         this.repeatAction()
         let iterator = 5
         while(iterator > 0) {
-            this.repeatAction(await this._isEventNotPerformed(), async () =>{await this.page.keyboard.press('Enter')});
+            await this.repeatAction(await this._isEventNotPerformed(), async () =>{await this.page.keyboard.press('Enter')});
             iterator--;
         }
     }
