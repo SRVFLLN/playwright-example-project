@@ -10,10 +10,11 @@ exports.DragNDropPage = class DragNDropPage extends BasePage {
         this.secondDragElement = page.locator('#draggable2');
         this.firstDropElement = page.locator('#droppable1');
         this.secondDropElement = page.locator('#droppable2');
+        this.eventText = page.locator('#keyeventslist > li')
     }
 
     async pressButton() {
-        await this.page.keyboard.press('a');
+        await this.page.keyboard.press('Enter', { delay: 500});
     }
 
     async dragFirstElement() {
@@ -30,5 +31,9 @@ exports.DragNDropPage = class DragNDropPage extends BasePage {
 
     async getSecondDropElementText() {
         return await this.secondDropElement.innerText();
+    }
+
+    async getEventText() {
+        return await this.eventText.innerText();
     }
 }
