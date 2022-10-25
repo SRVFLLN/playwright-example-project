@@ -19,20 +19,20 @@ jobs:
     - name: Run Playwright tests
       run: npm run test
     - name: Generate Report
-        if: always()
-        run: npm run allure:generate 
-     - name: Publishing Allure artifact to Github Actions
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: allure-report
-          path: ./allure-report
-      - name: Push to another branch
-        if: always()
-        uses: s0/git-publish-subdir-action@develop
-        env:
-          REPO: self
-          BRANCH: reports 
-          FOLDER: ./allure-report 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-          MESSAGE: "Reports added" 
+      if: always()
+      run: npm run allure:generate 
+    - name: Publishing Allure artifact to Github Actions
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: allure-report
+        path: ./allure-report
+    - name: Push to another branch
+      if: always()
+      uses: s0/git-publish-subdir-action@develop
+      env:
+        REPO: self
+        BRANCH: reports 
+        FOLDER: ./allure-report 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        MESSAGE: "Reports added" 
