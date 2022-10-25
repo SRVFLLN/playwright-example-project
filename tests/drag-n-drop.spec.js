@@ -10,7 +10,7 @@ test.describe("Drag and drop page", () => {
         expect(await dragNDropPage.getFirstDropElementText()).toEqual('Drop here');
         expect(await dragNDropPage.getSecondDropElementText()).toEqual('No Drop here');
         await dragNDropPage.pressButton();
-        expect(await dragNDropPage.eventText()).toEqual('down 13');
+        expect(await dragNDropPage.getEventText()).toEqual('down 13');
         expect(await dragNDropPage.getFirstDropElementText()).toEqual('Drop Here');
         expect(await dragNDropPage.getSecondDropElementText()).toEqual('Drop Here');
         await dragNDropPage.dragFirstElement();
