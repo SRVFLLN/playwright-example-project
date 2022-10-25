@@ -5,7 +5,7 @@ exports.HoverPage = class HoverPage extends BasePage {
     * @param {import('@playwright/test').Page} page
     */
     constructor(page) {
-        super(page);
+        super(page, 'text=CSS Pseudo Class - hover');
         this.hoverParagraph = page.locator('#hoverpara');
         this.textUnderHover = page.locator("#hoverparaeffect");
         this.hoverDiv = page.locator('#hoverdiv');

@@ -1,11 +1,10 @@
 const { test, expect } = require('@playwright/test');
-const {MainPage} = require('../pages/main.page');
-const {EventsPage} = require('../pages/events.page');
+const { MainPage } = require('../pages/main.page');
+const { EventsPage } = require('../pages/events.page');
 
 test.describe("Events page", () => {
     test.beforeEach(async ({page}) => {
-       let mainPage = new MainPage(page);
-       mainPage.navigateToEventsPage();
+       await new MainPage(page).navigateToEventsPage();
     });
 
     function isTriggered(text) {

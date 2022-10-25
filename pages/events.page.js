@@ -5,7 +5,7 @@ exports.EventsPage = class EventsPage extends BasePage {
     * @param {import('@playwright/test').Page} page
     */
     constructor(page) {
-        super(page);
+        super(page, 'text=JavaScript Events');
         this.blurTriggerButton = page.locator('#onblur');
         this.blurTriggerStatus = page.locator('#onblurstatus');
         this.clickTriggerButton = page.locator('#onclick');

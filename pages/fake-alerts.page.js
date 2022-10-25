@@ -5,7 +5,7 @@ exports.FakeAlertsPage = class FakeAlertsPage extends BasePage {
     * @param {import('@playwright/test').Page} page
     */
     constructor(page) {
-        super(page);
+        super(page, 'text=Fake Alert Box Examples');
         this.callFakeAlertButton = page.locator("#fakealert");
         this.callModalDialogButton = page.locator("#modaldialog");
         this.dialogheader = page.locator("#dialog-text");

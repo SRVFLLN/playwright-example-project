@@ -2,8 +2,9 @@ exports.BasePage = class BasePage {
     /**
     * @param {import('@playwright/test').Page} page
     */
-    constructor(page) {
+    constructor(page, locator) {
         this.page = page;
+        this.pageUniqElement = page.waitForSelector(locator);
         this.pageHeader = page.locator('h1');
     }
 
@@ -13,12 +14,10 @@ exports.BasePage = class BasePage {
     }
 
     async isPageOpen() {
-        await this.page.waitForSelector('h1');
-        return await this.pageHeader.isVisible();
+        return await (await this.pageUniqElement).isVisible();
     }
 
     async getPageHeaderText() {
-        await this.page.waitForSelector('h1');
         return await this.pageHeader.innerText();
     }
 

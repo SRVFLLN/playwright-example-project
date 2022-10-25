@@ -5,7 +5,7 @@ exports.ButtonPage = class FirstButtonPage extends BasePage {
     * @param {import('@playwright/test').Page} page
     */
     constructor(page) {
-        super(page);
+        super(page, 'text=Simple Dynamic Buttons');
         this.buttonSelector = '#button0';
         this.waitMessage = page.locator('#waitmessage');
         this.buttonsMessage = page.locator('#buttonmessage');

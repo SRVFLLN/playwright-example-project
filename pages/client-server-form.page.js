@@ -7,7 +7,7 @@ exports.CSFormPage = class ClientServerFormPage extends BasePage {
     * @param {import('@playwright/test').Page} page
     */
     constructor(page) {
-        super(page);
+        super(page, 'text=Input Validation Examples');
         this.firstnameValue = page.locator('#firstname-value');
         this.surnameValue = page.locator('#surname-value');
         this.ageValue = page.locator('#age-value');
@@ -23,32 +23,12 @@ exports.CSFormPage = class ClientServerFormPage extends BasePage {
             await this.page.setContent((await response.body()).toString())
         });
     }
-
-    async getFirstnameValue() {
-        return await this.firstnameValue.innerText();
-    }
-
-    async getSurnameValue() {
-        return await this.surnameValue.innerText();
-    }
-
-    async getAgeValue() {
-        return await this.ageValue.innerText();
-    }
-
-    async getCountryValue() {
-        return await this.countryValue.innerText();
-    }
-
-    async getNotesValue() {
-        return await this.notesValue.innerText();
-    }
-
+    
     async getValuesInJson() {
-        return {"firstname": await this.getFirstnameValue(),
-            "surname": await this.getSurnameValue(),
-            "age": parseInt(await this.getAgeValue()),
-            "country": await this.getCountryValue(),
-            "notes": await this.getNotesValue()}
+        return {"firstname": await this.firstnameValue.innerText(),
+            "surname": await this.surnameValue.innerText(),
+            "age": parseInt(await this.ageValue.innerText()),
+            "country": await this.countryValue.innerText(),
+            "notes": await this.notesValue.innerText()}
     }
 }

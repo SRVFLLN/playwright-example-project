@@ -5,14 +5,16 @@ exports.ButtonPage = class FirstButtonPage extends BasePage {
     * @param {import('@playwright/test').Page} page
     */
     constructor(page) {
-        super(page);
+        super(page, 'text=Disabled Dynamic Buttons');
         this.buttonSelector = '#button0';
         this.waitMessage = page.locator('#waitmessage');
         this.buttonsMessage = page.locator('#buttonmessage');
     }
 
     async clickOnButton(buttonIndex) {
-        await this.page.locator(this.buttonSelector+`${buttonIndex}`).click();
+        let button = this.page.locator(this.buttonSelector+`${buttonIndex}`)
+        await button.waitFor();
+        await button.click();
     }
 
     async isWaitMessageDisplayed() {

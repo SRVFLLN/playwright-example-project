@@ -1,12 +1,11 @@
 const { BasePage } = require('./base.page');
 
 exports.AlertPage = class AlertPage extends BasePage{
-
     /**
     * @param {import('@playwright/test').Page} page
     */
     constructor(page) {
-        super(page);
+        super(page, 'text=Alert Box Examples');
         this.pageHeader = page.locator("h1");
         this.callAlertButton = page.locator("#alertexamples");
         this.callConfirmButton = page.locator("#confirmexample");

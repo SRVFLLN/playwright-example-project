@@ -5,7 +5,7 @@ exports.FramesPage = class FramesPage extends BasePage {
     * @param {import('@playwright/test').Page} page
     */
     constructor(page) {
-        super(page);
+        super(page, 'text=iFrames Example');
         this.listFrame = page.frameLocator('#thedynamichtml');
         this.frameListElement = this.listFrame.locator('text=iFrame List Item 40');
         this.headerFrame = page.frameLocator("#theheaderhtml");
@@ -17,6 +17,7 @@ exports.FramesPage = class FramesPage extends BasePage {
     }
 
     async clickOnLink() {
+        await this.frameLink.waitFor();
         await this.frameLink.click();
     }
 }
