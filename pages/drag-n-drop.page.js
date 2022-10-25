@@ -1,3 +1,4 @@
+const { retries } = require("../playwright.config");
 const { BasePage } = require("./base.page");
 
 exports.DragNDropPage = class DragNDropPage extends BasePage {
@@ -14,7 +15,17 @@ exports.DragNDropPage = class DragNDropPage extends BasePage {
     }
 
     async pressButton() {
-        await this.page.keyboard.press('Enter', { delay: 500});
+        await this.page.keyboard.press('Enter');
+        this.repeatAction()
+        let iterator = 5
+        while(iterator > 0) {
+            this.repeatAction(await this._isEventNotPerformed(), async () =>{await this.page.keyboard.press('Enter')});
+            iterator--;
+        }
+    }
+    
+    async _isEventNotPerformed() {
+        return !(await this.eventText.isVisible())
     }
 
     async dragFirstElement() {

@@ -24,4 +24,8 @@ exports.BasePage = class BasePage {
     async reload() {
         await this.page.reload();
     }
+
+    async repeatAction(condition, action) {
+        if(condition) await action();
+    }
 }

@@ -13,11 +13,16 @@ exports.FramesPage = class FramesPage extends BasePage {
     }
 
     async getElementId() {
+        this.repeatAction(await this._isFrameElementVisible(), this.reload)
         return await this.frameListElement.getAttribute('id');
     }
 
     async clickOnLink() {
-        await this.frameLink.waitFor();
+        this.repeatAction(await this._isFrameElementVisible(), this.reload)
         await this.frameLink.click();
+    }
+
+    async _isFrameElementVisible() {
+        return !(await this.frameListElement.isVisible({timeout:1000}))
     }
 }
