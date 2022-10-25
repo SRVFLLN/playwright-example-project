@@ -11,6 +11,6 @@
 - In the same folder execute ```npm run setup```
 
 ### How to run the tests on windows
-- To run all test in one browser execute ```npm run test```
+- To run all test execute ```npm run test```
 - Execute ```npm run allure:generate``` for generate test reports
 - To open reports execute ```npm run allure:open```
