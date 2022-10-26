@@ -7,8 +7,7 @@ test.describe("Second dynamic buttons page", () => {
         await new MainPage(page).navigateToSecondButtonsPage();
         let buttonPage = new ButtonPage(page);
         expect(await buttonPage.isPageOpen()).toEqual(true);
-        let limit = parseInt((await buttonPage.getButtonMessage()).replace( /^\D+/g, ''));
-        for(let i = 0; i < limit; i++) {
+        for(let i = 0; i < 4; i++) {
             await buttonPage.clickOnButton(i);
             if (i!=0 & i!=3) expect(await buttonPage.isWaitMessageDisplayed()).toBe(true);
         }

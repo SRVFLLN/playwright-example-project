@@ -16,16 +16,6 @@ exports.DragNDropPage = class DragNDropPage extends BasePage {
 
     async pressButton() {
         await this.page.keyboard.press('Enter');
-        this.repeatAction()
-        let iterator = 5
-        while(iterator > 0) {
-            await this.repeatAction(await this._isEventNotPerformed(), async () =>{await this.page.keyboard.press('Enter')});
-            iterator--;
-        }
-    }
-    
-    async _isEventNotPerformed() {
-        return !(await this.eventText.isVisible())
     }
 
     async dragFirstElement() {
