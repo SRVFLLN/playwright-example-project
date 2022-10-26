@@ -14,6 +14,7 @@ exports.BasePage = class BasePage {
     }
 
     async isPageOpen() {
+        await this.page.waitForLoadState('load');
         return await (await this.pageUniqElement).isVisible();
     }
 
